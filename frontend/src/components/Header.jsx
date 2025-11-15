@@ -1,7 +1,7 @@
 function Header(){
     return(
         <>
-        Hello
+        This is header Page
         </>
     )
 }
