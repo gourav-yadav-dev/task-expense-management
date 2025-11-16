@@ -4,8 +4,8 @@ export function MainNavigation() {
     return (
         <>
             <nav className="  fixed bottom-0 left-0 w-full h-14 bg-gray-200 
-    flex items-center justify-around        /* FIX ALIGNMENT */
-    lg:fixed lg:top-18 lg:left-0 lg:p-5 lg:gap-7   /* Sidebar on big screen */
+    flex items-center justify-around       
+    lg:fixed lg:top-18 lg:left-0 lg:p-5 lg:gap-7   
     lg:w-52 lg:h-[calc(100vh-5rem)]
     lg:flex-col 
     lg:items-start lg:justify-start
