@@ -16,11 +16,20 @@ export function Header() {
         }
 
     }, [])
+    function handleLogout() {
+        localStorage.removeItem('token')
+        localStorage.removeItem('name')
+        setAlreadyLogin(false)
+    }
 
 
 
     return (
-        <header className="d-flex justify-content-between align-items-center p-3 shadow-sm bg-white">
+        <header className="  fixed top-0 left-0 w-full 
+      bg-white shadow 
+      flex justify-between items-center 
+      px-4 py-3 
+      z-50 ">
             <div className="fw-bold fs-4">
                 Organify
             </div>
@@ -37,10 +46,10 @@ export function Header() {
                 </button>
 
                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                    {alreadyLogin ? <div><li><button className="dropdown-item" href="#">Logout</button></li>
+                    {alreadyLogin ? <div><li><button className="dropdown-item" href="#" onClick={handleLogout}>Logout</button></li>
                     </div>
-                        : <div><li><Link className="dropdown-item" >Signup</Link></li>
-                            <li><Link className="dropdown-item" >Login</Link></li></div>}
+                        : <div><li><Link className="dropdown-item" to="/Signup" >Signup</Link></li>
+                            <li><Link className="dropdown-item" to="/Login">Login</Link></li></div>}
 
                 </ul>
             </div>
