@@ -4,8 +4,6 @@ import { MainNavigation } from './Components/MainNavigate/MainNavigation'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
 import { PageWrapper } from './Components/Animations/PageWrapper'
-
-// ⭐ Lazy Loaded Pages
 const Dashboard = lazy(() => import('./Pages/Dashboard/Dashboard'))
 const Task = lazy(() => import('./Pages/Task/Task'))
 const Expensive = lazy(() => import('./Pages/Expensive/Expensive'))
@@ -15,7 +13,7 @@ const Login = lazy(() => import('./Pages/Login/Login'))
 
 function App() {
 
-  const location = useLocation(); // ⭐ important for animation
+  const location = useLocation();
 
   return (
     <>
@@ -27,7 +25,7 @@ function App() {
         <div className="flex-1 lg:ml-52 mb-20 lg:mb-0 p-4">
           <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
 
-            {/* ⭐ KEY IS REQUIRED FOR ANIMATION */}
+           
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<PageWrapper><Dashboard /></PageWrapper>} />
               <Route path="/Task" element={<PageWrapper><Task /></PageWrapper>} />
