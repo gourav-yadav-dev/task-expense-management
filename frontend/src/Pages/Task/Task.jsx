@@ -1,5 +1,14 @@
+import AddTask from "./TaskFilter";
+import AddTaskForm from "./AddTaskForm";
+
 export default function Task() {
     return (
-        <div>lorem1000</div>
+        <div>
+            <div className="flex justify-between">
+                <AddTask />
+                <AddTaskForm />
+            </div>
+
+        </div>
     )
 }
