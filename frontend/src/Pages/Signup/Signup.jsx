@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-export function Signup() {
+export default function Signup() {
   const handleSubmit = (values, { resetForm }) => {
     console.log("Form Submitted:", values);
     localStorage.setItem("user", JSON.stringify(values));

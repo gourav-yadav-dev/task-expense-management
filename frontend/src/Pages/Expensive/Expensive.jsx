@@ -1,4 +1,4 @@
-export function Expensive() {
+export default function Expensive() {
     return (
         <>
            

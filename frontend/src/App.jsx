@@ -1,30 +1,43 @@
-
 import './App.css'
 import { Header } from './Components/Header/Header'
 import { MainNavigation } from './Components/MainNavigate/MainNavigation'
-import { Routes, Route } from 'react-router-dom'
-import { Task } from './Pages/Task/Task'
-import { Dashboard } from './Pages/Dashboard/Dashboard'
-import { Expensive } from './Pages/Expensive/Expensive'
-import { Settings } from './Pages/Settings/Settings'
-import { Signup } from './Pages/Signup/Signup'
-import { Login } from './Pages/Login/Login'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { Suspense, lazy } from 'react'
+import { PageWrapper } from './Components/Animations/PageWrapper'
+
+// ⭐ Lazy Loaded Pages
+const Dashboard = lazy(() => import('./Pages/Dashboard/Dashboard'))
+const Task = lazy(() => import('./Pages/Task/Task'))
+const Expensive = lazy(() => import('./Pages/Expensive/Expensive'))
+const Settings = lazy(() => import('./Pages/Settings/Settings'))
+const Signup = lazy(() => import('./Pages/Signup/Signup'))
+const Login = lazy(() => import('./Pages/Login/Login'))
 
 function App() {
+
+  const location = useLocation(); // ⭐ important for animation
+
   return (
     <>
       <Header />
-      <main className="flex min-h-screen pt-18 ">
+
+      <main className="flex min-h-screen pt-20">
         <MainNavigation />
-        <div className="flex-1  lg:ml-52 mb-20 lg:mb-0">
-          <Routes>
-            <Route path="/" element={<Dashboard />}></Route>
-            <Route path="/Task" element={<Task />}></Route>
-            <Route path="/Expensive" element={<Expensive />}></Route>
-            <Route path="/Setting" element={<Settings />}></Route>
-            <Route path="/Signup" element={<Signup />}></Route>
-            <Route path="/Login" element={<Login />}></Route>
-          </Routes>
+
+        <div className="flex-1 lg:ml-52 mb-20 lg:mb-0 p-4">
+          <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
+
+            {/* ⭐ KEY IS REQUIRED FOR ANIMATION */}
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<PageWrapper><Dashboard /></PageWrapper>} />
+              <Route path="/Task" element={<PageWrapper><Task /></PageWrapper>} />
+              <Route path="/Expensive" element={<PageWrapper><Expensive /></PageWrapper>} />
+              <Route path="/Setting" element={<PageWrapper><Settings /></PageWrapper>} />
+              <Route path="/Signup" element={<PageWrapper><Signup /></PageWrapper>} />
+              <Route path="/Login" element={<PageWrapper><Login /></PageWrapper>} />
+            </Routes>
+
+          </Suspense>
         </div>
       </main>
     </>

@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-export function Login() {
+export default function Login() {
   const handleSubmit = (values, { resetForm }) => {
     console.log("Form Submitted:", values);
 
