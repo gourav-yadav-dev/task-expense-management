@@ -22,10 +22,8 @@ function App() {
       <main className="flex min-h-screen pt-20">
         <MainNavigation />
 
-        <div className="flex-1 lg:ml-52 mb-20 lg:mb-0 p-4">
+        <div className="flex-1 lg:ml-52 mb-20 lg:mb-0 p-2">
           <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
-
-           
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<PageWrapper><Dashboard /></PageWrapper>} />
               <Route path="/Task" element={<PageWrapper><Task /></PageWrapper>} />
