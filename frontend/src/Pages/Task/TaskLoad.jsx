@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useFilter } from "../../Context/FilterContext";
 
 export default function TaskLoad() {
-    const { filter } = useFilter();
+    const { filters } = useFilter();
 
     // DEMO DATA (matches your Add Task form)
     const [tasks, setTasks] = useState([
@@ -29,7 +29,7 @@ export default function TaskLoad() {
             done: false,
         },
         {
-            id: 2,
+            id: 3,
             title: "Fix Responsive Issues",
             description: "Make sidebar and dropdown fully responsive.",
             priority: "Medium",
@@ -39,7 +39,7 @@ export default function TaskLoad() {
             status: "In Progress",
             done: false,
         },{
-            id: 2,
+            id: 4,
             title: "Exercise",
             description: "Make sidebar and dropdown fully responsive.",
             priority: "Medium",
@@ -60,12 +60,12 @@ export default function TaskLoad() {
 
     // Delete task
     const deleteTask = (id) => {
-        setTasks(tasks.filter(t => t.id !== id));
+        setTasks(tasks.filters(t => t.id !== id));
     };
 
     useEffect(() => {
-        console.log("Filter Applied:", filter);
-    }, [filter]);
+        console.log("Filter Applied:", filters);
+    }, [filters]);
 
     // ---------------- CARD COMPONENT ----------------
     const TaskCard = ({ task }) => {
